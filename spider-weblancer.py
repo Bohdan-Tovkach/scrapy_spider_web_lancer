@@ -2,7 +2,6 @@ import scrapy # our scrapy library
 import re # regular expression 
 
 # to retrieve data in .json or .csv scrapy crawl my_spider -o [filename].[extension] 
-
 class QuotesSpider(scrapy.Spider):
 
     name = "weblancer"
@@ -12,7 +11,7 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
         # use xpath to get data from div=row 
-        my_query = response.xpath("//div[@class='cols_table']/div[@class='row']") 
+        my_query = response.xpath("//div[@class='cols_table']/div[@class='row']")
         for my_dict in my_query:
             yield {
                 'title': my_dict.xpath("div[@class='col-sm-10']/h2[@class='title']\
